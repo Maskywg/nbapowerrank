@@ -95,6 +95,27 @@ body{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);font
 /* color helpers */
 .c-green{color:#3B6D11}.c-blue{color:#185FA5}.c-amber{color:#854F0B}.c-red{color:#A32D2D}
 
+/* ── accordion ── */
+.mtop{cursor:pointer;user-select:none;-webkit-user-select:none;transition:background .15s}
+.mtop:active{background:rgba(0,0,0,.05)}
+.mc-toggle{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:8px 1.1rem 10px;
+  font-size:12px;font-weight:500;letter-spacing:.5px;
+  color:var(--color-text-secondary);
+  border-top:0.5px solid var(--color-border-tertiary);
+  cursor:pointer;transition:background .15s;
+  user-select:none;-webkit-user-select:none;
+}
+.mc-toggle:active{background:rgba(0,0,0,.04)}
+.mc-toggle-icon{
+  font-size:14px;
+  transition:transform .25s ease;
+  display:inline-block;
+}
+.mc.open .mc-toggle-icon{transform:rotate(180deg)}
+.mbody{border-top:none}
+
 .footer{text-align:center;padding:1.1rem 1rem .8rem;font-size:12px;color:var(--color-text-secondary);border-top:0.5px solid var(--color-border-tertiary);margin-top:1rem}
 
 /* ── 手機響應式 ── */
@@ -653,5 +674,32 @@ body{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);font
 </div>
 
 <div class="footer">資料來源：ESPN · NBA.com · CBS Sports · Yahoo Sports · Basketball-Reference · 2026.05.05<br>傷情資料即時更新，請以各隊官方 injury report 為準</div>
+
+<script>
+document.querySelectorAll('.mc').forEach(card => {
+  const header = card.querySelector('.mtop');
+  const body   = card.querySelector('.mbody');
+  if (!header || !body) return;
+
+  // 預設收合
+  body.style.display = 'none';
+
+  // 插入展開按鈕（在 mtop 下方、mbody 上方）
+  const toggle = document.createElement('div');
+  toggle.className = 'mc-toggle';
+  toggle.innerHTML = '<span class="mc-toggle-icon">▾</span><span class="mc-toggle-txt">展開分析</span>';
+  card.insertBefore(toggle, body);
+
+  // 切換函式
+  function doToggle() {
+    const isOpen = card.classList.toggle('open');
+    body.style.display = isOpen ? 'block' : 'none';
+    card.querySelector('.mc-toggle-txt').textContent = isOpen ? '收合' : '展開分析';
+  }
+
+  header.addEventListener('click', doToggle);
+  toggle.addEventListener('click', doToggle);
+});
+</script>
 </body>
 </html>
