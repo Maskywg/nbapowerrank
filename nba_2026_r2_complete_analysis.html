@@ -1,4 +1,11 @@
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBA 季後賽二輪戰力分析 2026</title>
+</head>
+<body>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -89,6 +96,33 @@ body{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);font
 .c-green{color:#3B6D11}.c-blue{color:#185FA5}.c-amber{color:#854F0B}.c-red{color:#A32D2D}
 
 .footer{text-align:center;padding:1.1rem 1rem .8rem;font-size:12px;color:var(--color-text-secondary);border-top:0.5px solid var(--color-border-tertiary);margin-top:1rem}
+
+/* ── 手機響應式 ── */
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .stars-grid { grid-template-columns: 1fr; }
+  .two-col    { grid-template-columns: 1fr; }
+  .star-name  { font-size: 15px; }
+  .star-role  { font-size: 12px; }
+  .stat-val   { font-size: 15px; }
+  .stat-lbl   { font-size: 11px; }
+  .star-note  { font-size: 12px; }
+  .sub-players{ font-size: 14px; }
+  .inj-name   { font-size: 15px; }
+  .inj-detail { font-size: 12px; }
+  .inj-status { font-size: 12px; }
+  .edge-val   { font-size: 15px; }
+  .edge-lbl   { font-size: 12px; }
+  .tname      { font-size: 22px; }
+  .tseed      { font-size: 13px; }
+  .trec       { font-size: 13px; }
+  .vsb span   { font-size: 12px; }
+  .vpick      { font-size: 13px; }
+  .idx-score  { font-size: 15px; }
+  .sl         { font-size: 12px; }
+  .mbody      { padding: 0 .85rem .9rem; }
+  .mtop       { padding: .85rem .85rem .65rem; }
+}
 </style>
 
 <div class="rh">
@@ -619,3 +653,5 @@ body{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);font
 </div>
 
 <div class="footer">資料來源：ESPN · NBA.com · CBS Sports · Yahoo Sports · Basketball-Reference · 2026.05.05<br>傷情資料即時更新，請以各隊官方 injury report 為準</div>
+</body>
+</html>
