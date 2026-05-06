@@ -96,20 +96,44 @@ body{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);font
 .c-green{color:#3B6D11}.c-blue{color:#185FA5}.c-amber{color:#854F0B}.c-red{color:#A32D2D}
 
 /* ── accordion ── */
-.mtop{cursor:pointer;user-select:none;-webkit-user-select:none;transition:background .15s}
-.mtop:active{background:rgba(0,0,0,.05)}
+.mtop{
+  cursor:pointer;user-select:none;-webkit-user-select:none;
+  transition:background .15s;
+  border-bottom: 2.5px solid #C8A84B;   /* 金色框：代表「這裡可點」 */
+  border-radius: 12px 12px 0 0;
+}
+.mtop:hover{background:rgba(200,168,75,.07)}
+.mtop:active{background:rgba(200,168,75,.15)}
+
+/* 右上角小提示標籤 */
+.mtop::after{
+  content:'👆 點我展開';
+  display:block;
+  text-align:center;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.5px;
+  color:#C8A84B;
+  padding:4px 0 8px;
+}
+.mc.open .mtop::after{content:'👆 點我收合'}
+
 .mc-toggle{
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  padding:8px 1.1rem 10px;
-  font-size:12px;font-weight:500;letter-spacing:.5px;
-  color:var(--color-text-secondary);
-  border-top:0.5px solid var(--color-border-tertiary);
-  cursor:pointer;transition:background .15s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 1.1rem 12px;
+  font-size:14px;font-weight:700;letter-spacing:.5px;
+  color:#fff;
+  background: linear-gradient(135deg,#185FA5,#1D428A);  /* 藍色：展開鈕 */
+  border-top: 2.5px solid #C8A84B;
+  cursor:pointer;transition:filter .15s, background .15s;
   user-select:none;-webkit-user-select:none;
 }
-.mc-toggle:active{background:rgba(0,0,0,.04)}
+.mc.open .mc-toggle{
+  background: linear-gradient(135deg,#3B6D11,#2d5210);  /* 綠色：收合鈕 */
+}
+.mc-toggle:active{filter:brightness(.88)}
 .mc-toggle-icon{
-  font-size:14px;
+  font-size:16px;
   transition:transform .25s ease;
   display:inline-block;
 }
